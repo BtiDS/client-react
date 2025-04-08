@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import TextLink from "../components/atom/TextLink";
 import { LinkTextIcon } from "../assets/icons";
 import Button from "../components/atom/Button";
+import RadioButton from "../components/atom/RadioButton";
 
 const ComponentPage = () => {
   return (
@@ -792,6 +793,32 @@ const ComponentPage = () => {
           </ComponentsBox>
         </div>
       </ComponentContainer>
+      <RadioButton
+        label="라디오 버튼"
+        name="radio-group"
+        value="option"
+        $size="large"
+      />
+      <RadioButton label="라디오 버튼" name="radio-group" value="option" />
+      <RadioButton
+        label="라디오 버튼"
+        name="radio-group1"
+        value="option1"
+        checked
+      />
+      <RadioButton
+        label="라디오 버튼"
+        name="radio-group2"
+        value="option2"
+        checked
+        disabled
+      />
+      <RadioButton
+        label="라디오 버튼"
+        name="radio-group3"
+        value="option3"
+        disabled
+      />
     </PageContainer>
   );
 };
