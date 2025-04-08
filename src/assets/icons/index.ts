@@ -1,0 +1,1 @@
+export { default as LinkTextIcon } from '@/assets/icons/link_text_icon.svg';
