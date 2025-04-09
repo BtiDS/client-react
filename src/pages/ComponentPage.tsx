@@ -793,32 +793,86 @@ const ComponentPage = () => {
           </ComponentsBox>
         </div>
       </ComponentContainer>
-      <RadioButton
-        label="라디오 버튼"
-        name="radio-group"
-        value="option"
-        $size="large"
-      />
-      <RadioButton label="라디오 버튼" name="radio-group" value="option" />
-      <RadioButton
-        label="라디오 버튼"
-        name="radio-group1"
-        value="option1"
-        checked
-      />
-      <RadioButton
-        label="라디오 버튼"
-        name="radio-group2"
-        value="option2"
-        checked
-        disabled
-      />
-      <RadioButton
-        label="라디오 버튼"
-        name="radio-group3"
-        value="option3"
-        disabled
-      />
+      <ComponentTitle>RadioButton</ComponentTitle>
+      <ComponentContainer>
+        <ComponentsBox>
+          <RadioButton
+            label="라디오 버튼"
+            name="radio-group"
+            value="option"
+            $size="large"
+          />
+          <RadioButton
+            label="라디오 버튼"
+            name="radio-group1"
+            value="option1"
+            $size="medium"
+          />
+          <RadioButton
+            label="라디오 버튼"
+            name="radio-group2"
+            value="option2"
+            $size="medium"
+            checked
+          />
+          <RadioButton
+            label="라디오 버튼"
+            name="radio-group3"
+            value="option3"
+            $size="medium"
+            disabled
+          />
+          <RadioButton
+            label="라디오 버튼"
+            name="radio-group4"
+            value="option4"
+            $size="medium"
+            checked
+            disabled
+          />
+        </ComponentsBox>
+        <ComponentsBox>
+          <RadioButton
+            label="라디오 버튼"
+            name="radio-group5"
+            value="option5"
+            $size="large"
+            helpText="도움말 텍스트"
+          />
+          <RadioButton
+            label="라디오 버튼"
+            name="radio-group5"
+            value="option6"
+            $size="medium"
+            helpText="도움말 텍스트"
+          />
+          <RadioButton
+            label="라디오 버튼"
+            name="radio-group6"
+            value="option7"
+            $size="medium"
+            helpText="도움말 텍스트"
+            checked
+          />
+          <RadioButton
+            label="라디오 버튼"
+            name="radio-group7"
+            value="option8"
+            $size="medium"
+            helpText="도움말 텍스트"
+            disabled
+          />
+          <RadioButton
+            label="라디오 버튼"
+            name="radio-group8"
+            value="option9"
+            $size="medium"
+            helpText="도움말 텍스트"
+            checked
+            disabled
+          />
+        </ComponentsBox>
+      </ComponentContainer>
     </PageContainer>
   );
 };

@@ -28,7 +28,7 @@ const RadioButton = ({
   disabled,
 }: RadioButtonProps) => {
   return (
-    <Container>
+    <RadioContainer>
       <RadioWrapper>
         <RadioInput
           type="radio"
@@ -39,14 +39,18 @@ const RadioButton = ({
           checked={checked}
           disabled={disabled}
         />
-        <RadioLabel $size={$size}>{label}</RadioLabel>
+        <RadioLabel $size={$size} disabled={disabled}>
+          {label}
+        </RadioLabel>
       </RadioWrapper>
-      {helpText && <RadioHelpText>{helpText}</RadioHelpText>}
-    </Container>
+      {helpText && (
+        <RadioHelpText disabled={disabled}>{helpText}</RadioHelpText>
+      )}
+    </RadioContainer>
   );
 };
 
-const Container = styled.div`
+const RadioContainer = styled.div`
   display: flex;
   flex-direction: column;
 `;
@@ -57,14 +61,10 @@ const RadioWrapper = styled.div`
   gap: 8px;
 `;
 
-interface RadioLabelProps {
-  $size?: RadioButtonSize;
-  $isDisabled?: boolean;
-}
-
 const RadioInput = styled.input<RadioButtonStyleProps>`
   border: 1px solid #58616a;
   background: #fff;
+  margin: 0;
 
   ${({ $size }) => {
     switch ($size) {
@@ -82,25 +82,33 @@ const RadioInput = styled.input<RadioButtonStyleProps>`
     }
   }};
 
+  ${({ disabled }) =>
+    disabled &&
+    css`
+      border: 1px solid #8a949e;
+      background: #cdd1d5;
+    `};
+
   &:disabled {
     border: 1px solid #8a949e;
     background: #cdd1d5;
   }
 `;
 
-const RadioLabel = styled.label<RadioLabelProps>`
+const RadioLabel = styled.label<RadioButtonStyleProps>`
   font-size: ${({ $size }) => ($size === "large" ? "17px" : "14px")};
   line-height: 150%;
   font-weight: 400;
-  color: ${({ $isDisabled }) => ($isDisabled ? "#868e96" : "#1e2124")};
-  cursor: ${({ $isDisabled }) => ($isDisabled ? "not-allowed" : "pointer")};
+  color: ${({ disabled }) => (disabled ? "#868e96" : "#1e2124")};
+  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
 `;
 
-const RadioHelpText = styled.p`
-  margin: 4px 0 0 32px;
-  font-size: 14px;
+const RadioHelpText = styled.p<RadioButtonStyleProps>`
+  margin: ${({ $size }) =>
+    $size === "large" ? "4px 0 0 32px" : "4px 0 0 28px"};
+  font-size: ${({ $size }) => ($size === "large" ? "17px" : "15px")};
   line-height: 150%;
-  color: #868e96;
+  color: ${({ disabled }) => (disabled ? "#8A949E" : "#464c53")};
 `;
 
 export default RadioButton;
