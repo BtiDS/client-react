@@ -1,5 +1,6 @@
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
+import "@/styles/theme.css";
 
 type ButtonType = "primary" | "secondary";
 type ButtonStyle = "filled" | "outline";
@@ -49,13 +50,14 @@ const Button = ({
 
 const Buttons = styled.button<ButtonStyleProps>`
   font-weight: 500;
-  border-radius: 8px;
+  line-height: 140%;
+  letter-spacing: var(--ref-typo-letter-spacing-0);
 
   ${({ $type, $style }) => {
     if ($type === "primary" && $style === "filled") {
       return css`
-        background: #5521bd;
-        color: #fff;
+        background: var(--com-button-color-background-primary);
+        color: var(--com-button-color-text-inverse);
         border: 2px solid transparent;
 
         &::before,
@@ -64,19 +66,19 @@ const Buttons = styled.button<ButtonStyleProps>`
         }
 
         &:hover {
-          background: #6e2fcc;
+          background: var(--com-button-color-background-primary-light);
         }
         &:focus {
-          background: #5521bd;
-          border: 2px solid #1c1c1e;
+          background: var(--com-button-color-background-primary);
+          border: 2px solid var(--com-button-color-border-basic);
         }
         &:active {
-          background: #2d08ab;
+          background: var(--com-button-color-background-primary-dark);
           border: 2px solid transparent;
         }
         &:disabled {
-          background: #f1f3f5;
-          color: #868e96;
+          background: var(--com-button-color-background-light);
+          color: var(--com-button-color-text-lighter);
           cursor: not-allowed;
           &::before,
           &::after {
@@ -87,9 +89,9 @@ const Buttons = styled.button<ButtonStyleProps>`
       `;
     } else if ($type === "primary" && $style === "outline") {
       return css`
-        background: #f8f9fa;
-        color: #5521bd;
-        border: 1px solid #5521bd;
+        background: var(--com-button-color-background-lighter);
+        color: var(--com-button-color-text-primary);
+        border: 1px solid var(--com-button-color-border-primary);
 
         &::before,
         &::after {
@@ -98,15 +100,15 @@ const Buttons = styled.button<ButtonStyleProps>`
         }
 
         &:hover {
-          background: #eee7f9;
+          background: var(--com-button-color-background-primary-bright);
         }
         &:focus {
-          border: 2px solid #1c1c1e;
+          border: 2px solid var(--com-button-color-border-basic);
         }
         &:active {
-          background: #eee7f9;
-          border: 1px solid #2d08ab;
-          color: #2d08ab;
+          background: var(--com-button-color-background-primary-bright);
+          border: 1px solid var(--com-button-color-border-primary-dark);
+          color: var(--com-button-color-text-primary-dark);
           &::before,
           &::after {
             filter: brightness(0) saturate(100%) invert(10%) sepia(95%)
@@ -114,8 +116,8 @@ const Buttons = styled.button<ButtonStyleProps>`
           }
         }
         &:disabled {
-          background: #f1f3f5;
-          color: #868e96;
+          background: var(--com-button-color-background-light);
+          color: var(--com-button-color-text-lighter);
           border: none;
           cursor: not-allowed;
           &::before,
@@ -200,43 +202,43 @@ const Buttons = styled.button<ButtonStyleProps>`
       switch ($state) {
         case "hover":
           return css`
-            background: #6e2fcc;
+            background: var(--com-button-color-background-primary-light);
           `;
         case "focus":
           return css`
-            background: #5521bd;
-            border: 2px solid #1c1c1e;
+            background: var(--com-button-color-background-primary);
+            border: 2px solid var(--com-button-color-border-basic);
           `;
         case "pressed":
           return css`
-            background: #2d08ab;
+            background: var(--com-button-color-background-primary-dark);
           `;
         case "disabled":
           return css`
-            background: #f1f3f5;
-            color: #868e96;
+            background: var(--com-button-color-background-light);
+            color: var(--com-button-color-text-lighter);
           `;
       }
     } else if ($type === "primary" && $style === "outline") {
       switch ($state) {
         case "hover":
           return css`
-            background: #eee7f9;
+            background: var(--com-button-color-background-primary-bright);
           `;
         case "focus":
           return css`
-            border: 2px solid #1c1c1e;
+            border: 2px solid var(--com-button-color-border-basic);
           `;
         case "pressed":
           return css`
-            background: #eee7f9;
-            border: 1px solid #2d08ab;
-            color: #2d08ab;
+            background: var(--com-button-color-background-primary-bright);
+            border: 1px solid var(--com-button-color-border-primary-dark);
+            color: var(--com-button-color-text-primary-dark);
           `;
         case "disabled":
           return css`
-            background: #f1f3f5;
-            color: #868e96;
+            background: var(--com-button-color-background-light);
+            color: var(--com-button-color-text-lighter);
             border: none;
           `;
       }
@@ -290,9 +292,10 @@ const Buttons = styled.button<ButtonStyleProps>`
     switch ($size) {
       case "large":
         return css`
-          font-size: 18px;
-          height: 56px;
-          padding: 14px 32px;
+          font-size: var(--ref-typo-font-size-body-2);
+          height: var(--com-button-height-large);
+          border-radius: var(--com-button-radius-large);
+          padding: 0 var(--com-button-padding-horizontal-large);
           &::before,
           &::after {
             width: 24px;
@@ -302,10 +305,10 @@ const Buttons = styled.button<ButtonStyleProps>`
         `;
       case "medium":
         return css`
-          font-size: 16px;
-          height: 48px;
-          padding: 12px 28px;
-
+          font-size: var(--ref-typo-font-size-body-2);
+          height: var(--com-button-height-medium);
+          border-radius: var(--com-button-radius-medium);
+          padding: 0 var(--com-button-padding-horizontal-medium);
           &::before,
           &::after {
             width: 20px;
@@ -315,11 +318,10 @@ const Buttons = styled.button<ButtonStyleProps>`
         `;
       case "small":
         return css`
-          font-size: 14px;
-          height: 36px;
-          font-weight: 400;
-          padding: 8px 32px;
-          border-radius: 4px;
+          font-size: var(--ref-typo-font-size-body-4);
+          height: var(--com-button-height-small);
+          border-radius: var(--com-button-radius-small);
+          padding: 0 var(--com-button-padding-horizontal-small);
           &::before,
           &::after {
             width: 16px;
